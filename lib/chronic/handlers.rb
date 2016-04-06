@@ -421,6 +421,21 @@ module Chronic
       handle_r(new_tokens, options)
     end
 
+    # handle repeater/repeater?/grabber?/repeater
+    def handle_r_r_g_r(tokens, options)
+      if tokens.size >= 4
+        new_tokens = [tokens[2], tokens[3], tokens[0], tokens[1]]
+        handle_r(new_tokens, options)
+      else
+        first_repeater_set = tokens[0..1].select{|x| x.get_tag(Repeater) }
+        grabbers = tokens.select{|x| x.get_tag(Grabber)}
+        last_repeater_set = tokens.select{|x| !first_repeater_set.include?(x) && x.get_tag(Repeater) }
+
+        new_tokens = first_repeater_set + grabbers + last_repeater_set
+        handle_r(new_tokens, options)
+      end
+    end
+
     # arrows
 
     # Handle scalar/repeater/pointer helper

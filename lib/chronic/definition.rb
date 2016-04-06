@@ -70,6 +70,7 @@ module Chronic
       [
         Handler.new([:separator_on?, :grabber?, :repeater, :separator_at?, :repeater?, :repeater?], :handle_r),
         Handler.new([:grabber?, :repeater, :repeater, :separator?, :repeater?, :repeater?], :handle_r),
+        Handler.new([:separator_on?, :repeater?, :repeater, :grabber?, :repeater], :handle_r_r_g_r),
         Handler.new([:repeater, :grabber, :repeater], :handle_r_g_r)
       ]
     end
