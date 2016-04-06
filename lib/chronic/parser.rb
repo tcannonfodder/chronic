@@ -98,6 +98,7 @@ module Chronic
       text.gsub!(/(\s+|:\d{2}|:\d{2}\.\d{3})\-(\d{2}:?\d{2})\b/, '\1tzminus\2')
       text.gsub!(/\./, ':')
       text.gsub!(/([ap]):m:?/, '\1m')
+      text.gsub!(/['’]s/, '')
       text.gsub!(/['"]/, '')
       text.gsub!(/,/, ' ')
       text.gsub!(/^second /, '2nd ')
